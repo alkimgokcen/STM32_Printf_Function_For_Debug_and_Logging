@@ -194,7 +194,7 @@ void debugPrintf(char *format, ...) // own printf function // format free
 	uint8_t len; // verinin uzunlugu
   len = vsprintf(TX_BUFFER, format, args);
 	while(UART_TRANSMIT_READY == 0);
-	UART_TRANSMIT_READY = 1;
+	UART_TRANSMIT_READY = 0;
 	if(HAL_UART_Transmit_IT(&huart2, (uint8_t*)TX_BUFFER, len)!= HAL_OK)
   {
     Error_Handler();
